@@ -352,5 +352,5 @@ free -h && df -h && uptime
 ## Related Deliverables
 
 - [Networking Request Lifecycle Diagram](./diagrams/networking-request-lifecycle.md) — end-to-end path from browser to backend services
-- Distributed systems notes _(planned)_
+- [Distributed Systems Notes](./distributed-systems-notes.md) — logs, replication, partitioning, consistency, and fault tolerance
 - Architecture breakdowns from _Designing Data-Intensive Applications_ _(planned)_
