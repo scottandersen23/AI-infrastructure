@@ -380,4 +380,5 @@ For LLM endpoints, TTFB often dominates because token generation is sequential. 
 
 - [Linux Command Reference](../linux-command-reference.md) — `curl`, `dig`, `ss`, and troubleshooting commands
 - [Distributed Systems Notes](../distributed-systems-notes.md) — replication, partitioning, consistency, and fault tolerance
+- [DDIA Architecture Breakdowns](../ddia-architecture-breakdowns.md) — _Designing Data-Intensive Applications_ chapter notes
 - Phase 1 topics: HTTP, TCP/IP, DNS, TLS, reverse proxies, load balancing

@@ -524,4 +524,4 @@ When designing or reviewing a distributed component in this learning lab, ask:
 
 - [Linux Command Reference](./linux-command-reference.md) — process, network, and troubleshooting commands
 - [Networking Request Lifecycle Diagram](./diagrams/networking-request-lifecycle.md) — request path through load balancers, proxies, and services
-- Architecture breakdowns from _Designing Data-Intensive Applications_ _(planned)_
+- [DDIA Architecture Breakdowns](./ddia-architecture-breakdowns.md) — chapter tradeoffs, patterns, and AI platform connections

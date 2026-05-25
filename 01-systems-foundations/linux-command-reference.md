@@ -353,4 +353,4 @@ free -h && df -h && uptime
 
 - [Networking Request Lifecycle Diagram](./diagrams/networking-request-lifecycle.md) — end-to-end path from browser to backend services
 - [Distributed Systems Notes](./distributed-systems-notes.md) — logs, replication, partitioning, consistency, and fault tolerance
-- Architecture breakdowns from _Designing Data-Intensive Applications_ _(planned)_
+- [DDIA Architecture Breakdowns](./ddia-architecture-breakdowns.md) — chapter tradeoffs, patterns, and AI platform connections
