@@ -161,11 +161,11 @@ Understand how local LLM inference works by running and benchmarking local model
 
 ### Deliverables
 
-- Local LLM API wrapper
-- Streaming response endpoint
-- Model comparison notes
-- Benchmark results
-- Latency and throughput report
+- [Local LLM API wrapper](./03-local-llm-serving-lab/api/app/)
+- [Streaming response endpoint](./03-local-llm-serving-lab/api/app/main.py)
+- [Model comparison notes](./03-local-llm-serving-lab/docs/model-comparison-notes.md)
+- [Benchmark results](./03-local-llm-serving-lab/docs/benchmark-results.md)
+- [Latency and throughput report](./03-local-llm-serving-lab/docs/latency-throughput-report.md)
 
 ### Example Benchmarks
 
