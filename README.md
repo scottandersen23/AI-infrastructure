@@ -317,11 +317,11 @@ Understand why AI systems become slow and how to measure performance bottlenecks
 
 ### Deliverables
 
-- Load test results
-- Model-serving benchmark report
-- Bottleneck analysis
-- Before/after optimization notes
-- Performance architecture diagram
+- [Load test results](./06-inference-performance-lab/docs/load-test-results.md)
+- [Model-serving benchmark report](./06-inference-performance-lab/docs/model-serving-benchmark-report.md)
+- [Bottleneck analysis](./06-inference-performance-lab/docs/bottleneck-analysis.md)
+- [Before/after optimization notes](./06-inference-performance-lab/docs/before-after-optimization-notes.md)
+- [Performance architecture diagram](./06-inference-performance-lab/diagrams/performance-architecture.md)
 
 ### Example Questions
 

@@ -1,0 +1,25 @@
+services:
+  inference-api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8004:8004"
+    environment:
+      MODEL_NAME: ${MODEL_NAME:-mock-inference-model}
+      BASE_TOKEN_LATENCY_MS: ${BASE_TOKEN_LATENCY_MS:-18}
+      PROMPT_TOKEN_LATENCY_MS: ${PROMPT_TOKEN_LATENCY_MS:-1.5}
+      MAX_CONCURRENT_REQUESTS: ${MAX_CONCURRENT_REQUESTS:-4}
+      SIMULATED_VRAM_MB: ${SIMULATED_VRAM_MB:-4096}
+      KV_CACHE_MB_PER_TOKEN: ${KV_CACHE_MB_PER_TOKEN:-0.02}
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://localhost:8004/health')",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
