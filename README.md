@@ -365,12 +365,12 @@ Deploy the AI application stack using Kubernetes.
 
 ### Deliverables
 
-- Kubernetes manifests
-- Local cluster deployment
-- Ingress configuration
-- Autoscaling configuration
-- Deployment guide
-- Production-readiness checklist
+- [Kubernetes manifests](./07-kubernetes-ai-platform-deployment/manifests/)
+- [Local cluster deployment](./07-kubernetes-ai-platform-deployment/kind/kind-cluster.yaml)
+- [Ingress configuration](./07-kubernetes-ai-platform-deployment/manifests/30-ingress.yaml)
+- [Autoscaling configuration](./07-kubernetes-ai-platform-deployment/manifests/40-autoscaling.yaml)
+- [Deployment guide](./07-kubernetes-ai-platform-deployment/docs/deployment-guide.md)
+- [Production-readiness checklist](./07-kubernetes-ai-platform-deployment/docs/production-readiness-checklist.md)
 
 ### Example Architecture
 

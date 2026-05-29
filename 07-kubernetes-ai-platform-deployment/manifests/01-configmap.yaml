@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ai-platform-config
+  namespace: ai-platform
+data:
+  ENVIRONMENT: local
+  API_PORT: "8000"
+  LLM_PORT: "8001"
+  OBSERVABILITY_PORT: "8003"
+  POSTGRES_HOST: postgres
+  POSTGRES_PORT: "5432"
+  REDIS_HOST: redis
+  REDIS_PORT: "6379"
+  VECTOR_DATABASE_URL: postgresql://rag:rag@postgres:5432/rag
+  OTLP_ENDPOINT: http://observability-service:4317

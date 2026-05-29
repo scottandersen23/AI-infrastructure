@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-service
+  namespace: ai-platform
+  labels:
+    app: worker-service
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: worker-service
+  template:
+    metadata:
+      labels:
+        app: worker-service
+    spec:
+      containers:
+        - name: worker-service
+          image: ai-platform/worker-service:local
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: ai-platform-config
+            - secretRef:
+                name: ai-platform-secrets
+          env:
+            - name: DATABASE_URL
+              value: postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@postgres:5432/$(POSTGRES_DB)
+            - name: REDIS_URL
+              value: redis://redis:6379/0
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 768Mi

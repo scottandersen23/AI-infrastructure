@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-service
+  namespace: ai-platform
+  labels:
+    app: llm-service
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: llm-service
+  template:
+    metadata:
+      labels:
+        app: llm-service
+    spec:
+      containers:
+        - name: llm-service
+          image: ai-platform/llm-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8001
+          envFrom:
+            - configMapRef:
+                name: ai-platform-config
+          env:
+            - name: LLM_RUNTIME
+              value: mock
+            - name: DEFAULT_MODEL
+              value: mock-local-model
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: llm-service
+  namespace: ai-platform
+spec:
+  selector:
+    app: llm-service
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8001

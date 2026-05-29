@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: observability-service
+  namespace: ai-platform
+  labels:
+    app: observability-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: observability-service
+  template:
+    metadata:
+      labels:
+        app: observability-service
+    spec:
+      containers:
+        - name: observability-service
+          image: ai-platform/observability-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8003
+            - containerPort: 4317
+          envFrom:
+            - configMapRef:
+                name: ai-platform-config
+          env:
+            - name: OTEL_EXPORTER
+              value: console
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8003
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: observability-service
+  namespace: ai-platform
+spec:
+  selector:
+    app: observability-service
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8003
+    - name: otlp
+      port: 4317
+      targetPort: 4317
