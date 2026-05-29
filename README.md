@@ -212,11 +212,11 @@ Build a retrieval-augmented generation system over local documents.
 
 ### Deliverables
 
-- Markdown/PDF document assistant
-- RAG API endpoint
-- Vector search layer
-- Retrieval quality notes
-- Prompt template examples
+- [Markdown/PDF document assistant](./04-rag-document-assistant/api/app/document_loader.py)
+- [RAG API endpoint](./04-rag-document-assistant/api/app/main.py)
+- [Vector search layer](./04-rag-document-assistant/docs/vector-search-layer.md)
+- [Retrieval quality notes](./04-rag-document-assistant/docs/retrieval-quality-notes.md)
+- [Prompt template examples](./04-rag-document-assistant/prompts/)
 
 ### Example Flow
 
