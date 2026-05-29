@@ -1,0 +1,48 @@
+{
+  "title": "AI Observability Dashboard",
+  "description": "Dashboard specification for monitoring AI API latency, tokens, retrieval, errors, and quality.",
+  "panels": [
+    {
+      "title": "Request Latency",
+      "type": "timeseries",
+      "metric": "request_latency_ms",
+      "description": "End-to-end latency for /ask requests."
+    },
+    {
+      "title": "Model Latency",
+      "type": "timeseries",
+      "metric": "model_latency_ms",
+      "description": "Time spent in model generation."
+    },
+    {
+      "title": "Retrieval Latency",
+      "type": "timeseries",
+      "metric": "retrieval_latency_ms",
+      "description": "Time spent retrieving context."
+    },
+    {
+      "title": "Token Usage",
+      "type": "bar",
+      "metric": "total_tokens",
+      "description": "Prompt + completion tokens per request."
+    },
+    {
+      "title": "Error Rate",
+      "type": "stat",
+      "metric": "error_rate",
+      "description": "Failed AI requests divided by total requests."
+    },
+    {
+      "title": "Retrieval Hit Rate",
+      "type": "stat",
+      "metric": "retrieval_hit_rate",
+      "description": "Share of requests with at least one retrieved source."
+    },
+    {
+      "title": "Quality Score",
+      "type": "timeseries",
+      "metric": "quality_score",
+      "description": "Local heuristic score for grounded response quality."
+    }
+  ]
+}

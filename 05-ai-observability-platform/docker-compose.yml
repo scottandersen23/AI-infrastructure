@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8003:8003"
+    environment:
+      SERVICE_NAME: ai-observability-api
+      ENVIRONMENT: local
+      OTEL_EXPORTER: ${OTEL_EXPORTER:-otlp}
+      OTLP_ENDPOINT: ${OTLP_ENDPOINT:-http://phoenix:4317}
+      METRICS_DB_PATH: /app/observability_metrics.db
+      MODEL_NAME: ${MODEL_NAME:-mock-local-llm}
+      RETRIEVAL_TOP_K: ${RETRIEVAL_TOP_K:-3}
+    depends_on:
+      - phoenix
+
+  phoenix:
+    image: arizephoenix/phoenix:latest
+    ports:
+      - "6006:6006"
+      - "4317:4317"
+    environment:
+      PHOENIX_WORKING_DIR: /mnt/data
+    volumes:
+      - phoenix_data:/mnt/data
+
+volumes:
+  phoenix_data:

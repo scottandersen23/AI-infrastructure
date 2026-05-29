@@ -269,11 +269,11 @@ Instrument an AI application so model behavior, latency, failures, and token usa
 
 ### Deliverables
 
-- Instrumented AI API
-- OpenTelemetry traces
-- Langfuse or Phoenix integration
-- Observability dashboard
-- AI reliability report
+- [Instrumented AI API](./05-ai-observability-platform/api/app/main.py)
+- [OpenTelemetry traces](./05-ai-observability-platform/docs/opentelemetry-traces.md)
+- [Phoenix integration](./05-ai-observability-platform/docs/phoenix-integration.md)
+- [Observability dashboard](./05-ai-observability-platform/docs/observability-dashboard.md)
+- [AI reliability report](./05-ai-observability-platform/docs/ai-reliability-report.md)
 
 ### Example Metrics
 
