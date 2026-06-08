@@ -19,7 +19,7 @@ The project has four main runtime components:
 - **Worker service:** consumes queued jobs, runs task handlers, and writes results back to the database.
 - **PostgreSQL database:** acts as the source of truth for job status, payloads, results, errors, and timestamps.
 
-![System architecture](images/system-architecture.png)
+![System architecture](images/improved-system-architecture.png)
 
 This design gives the API a small, predictable responsibility: accept and track work. It also lets background processing evolve separately. In later AI infrastructure phases, the simple task handlers can become embedding jobs, document indexing, model inference, batch evaluations, or other long-running workflows.
 
@@ -29,7 +29,7 @@ The lifecycle starts with a client sending `POST /jobs` and a payload. The API v
 
 The worker blocks on Redis using a queue-consumer loop. When a job ID appears, the worker loads the job from PostgreSQL, marks it as `running`, executes the correct task handler, then writes either a `completed` result or a `failed` error message back to PostgreSQL.
 
-![Job lifecycle](images/job-lifecycle.png)
+![Job lifecycle](images/improved-job-lifecycle.png)
 
 The client can call `GET /jobs/{job_id}` until the job reaches a terminal state. This status-polling pattern is simple, easy to reason about, and reliable enough for many backend and AI platform workflows.
 
