@@ -8,7 +8,7 @@ That is the architectural problem this project explores.
 
 In this build, I implemented a production-style backend API and async worker system using FastAPI, Redis, PostgreSQL, workers, and Docker Compose. The core idea is straightforward: the API accepts a job, validates the request, stores durable state in PostgreSQL, places the job ID on a Redis queue, and returns a response immediately. A separate worker then processes the job in the background and writes the result or error back to the database.
 
-From an AI Data Platform Architect’s perspective, this pattern is more than a backend exercise. It is a foundational control-plane design for reliable AI infrastructure. The same architecture can support document ingestion, embedding generation, vector indexing, batch inference, model evaluation, report generation, and other long-running AI/data workflows.
+From an AI architecture perspective, this pattern is more than a backend exercise. It is a foundational control-plane design for reliable AI infrastructure. The same architecture can support document ingestion, embedding generation, vector indexing, batch inference, model evaluation, report generation, and other long-running AI/data workflows.
 
 The key components are intentionally simple:
 
