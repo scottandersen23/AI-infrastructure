@@ -1,26 +1,44 @@
 # LinkedIn Summary
 
-I wrote a detailed article on building an AI Observability Platform from the perspective of an AI Data Platform Architect.
+I recently built an AI Observability Platform to explore what it takes to monitor AI systems beyond basic API success or failure.
 
-The project uses FastAPI, OpenTelemetry, Arize Phoenix, local metrics, and a lightweight dashboard to show how AI APIs can be traced, measured, and monitored beyond basic HTTP success/failure.
+Traditional observability usually focuses on things like uptime, response codes, and latency.
 
-The key idea: AI observability is not just traditional API monitoring. It needs visibility into the full AI workflow.
+But AI systems need a deeper level of visibility.
 
-This project covers:
+An AI API can be online but slow.
+It can respond quickly but return weak answers.
+It can avoid infrastructure errors but still produce ungrounded output.
+It can technically “work” while burning too many tokens or failing retrieval quality.
 
-- Instrumenting an AI API with OpenTelemetry
-- Tracing request, retrieval, model generation, and quality evaluation spans
-- Exporting traces to Arize Phoenix through OTLP
-- Capturing request latency, retrieval latency, model latency, and token usage
-- Tracking error rate, retrieval hit rate, and quality score
-- Storing local request metrics in SQLite
-- Exposing `/metrics/summary`, `/metrics/events`, and `/dashboard`
-- Defining reliability goals and SLOs for AI systems
+That is why AI observability needs to look at the full workflow, not just the HTTP layer.
 
-From an AI Data Platform Architect’s perspective, the biggest takeaway is that AI reliability is not only uptime.
+For this project, I used:
 
-An AI system can be available but slow. It can be fast but ungrounded. It can return responses but burn too many tokens. It can avoid infrastructure errors while still producing weak answers.
+* FastAPI for the AI API layer
+* OpenTelemetry for tracing
+* Arize Phoenix for trace inspection
+* SQLite for local metric storage
+* A lightweight dashboard for reviewing system behavior
 
-That is why AI observability needs traces, metrics, dashboards, and quality signals designed specifically for model and retrieval workflows.
+The platform traces key parts of the AI workflow, including:
+
+* Request handling
+* Retrieval
+* Model generation
+* Quality evaluation
+* Latency
+* Token usage
+* Error rate
+* Retrieval hit rate
+* Quality score
+
+From my perspective, the biggest takeaway is this:
+
+AI reliability is not just uptime.
+
+Reliable AI systems need visibility into performance, cost, grounding, retrieval quality, and output quality.
+
+This project helped me think about AI APIs less like isolated endpoints and more like platform components that need to be measured, traced, evaluated, and improved over time.
 
 #AIObservability #OpenTelemetry #ArizePhoenix #AIInfrastructure #DataPlatform #FastAPI #LLM #RAG #MLOps #AIDesign
