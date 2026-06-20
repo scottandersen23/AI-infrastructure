@@ -76,6 +76,8 @@ def search_chunks(
 ) -> list[RetrievedChunk]:
     with get_connection() as connection:
         with connection.cursor() as cursor:
+            # Exact scans behave predictably for tiny local learning datasets.
+            cursor.execute("SET LOCAL enable_indexscan = off;")
             cursor.execute(
                 """
                 SELECT
@@ -91,7 +93,7 @@ def search_chunks(
                 JOIN documents d ON d.id = c.document_id
                 WHERE 1 - (c.embedding <=> %s::vector) >= %s
                 ORDER BY c.embedding <=> %s::vector
-                LIMIT %s;
+                LIMIT %s::int;
                 """,
                 (
                     to_vector_literal(query_embedding),
