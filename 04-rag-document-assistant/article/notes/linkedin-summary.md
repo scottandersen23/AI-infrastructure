@@ -1,37 +1,33 @@
 # LinkedIn Summary
 
-I built a RAG Document Assistant to better understand how retrieval-augmented generation works as an AI data platform pattern.
+I built a **RAG Document Assistant** to explore how AI systems can answer questions using private documents.
 
-The goal was not just to connect documents to an LLM.
+The goal was not just to connect files to an LLM.
 
-The goal was to build the full pipeline that makes private knowledge searchable, retrievable, source-grounded, and measurable.
+The goal was to build a simple pipeline that makes documents searchable, retrievable, and easier to trust.
 
-This project uses FastAPI, Postgres, pgvector, document loading, chunking, embeddings, vector search, and prompt templates to show how RAG systems work beyond the demo layer.
+This project uses FastAPI, Postgres, pgvector, document loading, text chunking, embeddings, vector search, and prompt templates.
 
-The build covers:
+The build includes:
 
-* Markdown, text, and PDF ingestion
-* Overlapping text chunking
-* Local hash embeddings for smoke testing
-* Optional Ollama embeddings for stronger semantic retrieval
-* Postgres + `pgvector` as the vector store
-* A `/search` endpoint for retrieval inspection
-* An `/ask` endpoint for source-grounded answers
-* Prompt templates with citations and “not enough information” behavior
-* Retrieval quality metrics including Recall@k, Precision@k, MRR, similarity spread, and citation accuracy
+* Uploading Markdown, text, and PDF files
+* Breaking documents into smaller text chunks
+* Creating embeddings for search
+* Storing document vectors in Postgres with `pgvector`
+* Searching documents through a `/search` endpoint
+* Asking questions through an `/ask` endpoint
+* Returning answers with source citations
+* Handling cases where there is not enough information
+* Measuring retrieval quality with basic search and citation metrics
 
 The biggest takeaway:
 
-RAG quality is not only a model problem. It is a data architecture problem.
+RAG is not just about the AI model. It is about giving the model the right information.
 
-The final answer depends on how documents are loaded, split, embedded, stored, retrieved, ranked, cited, and evaluated.
+A good answer depends on how the documents are loaded, split, searched, and passed into the prompt.
 
-A model can only generate a useful answer if the surrounding system gives it the right context.
+The model is important, but the system around the model is what makes the answer useful, grounded, and easier to verify.
 
-From an AI Data Platform Architect’s perspective, this is why RAG is such an important pattern. It connects private data, retrieval infrastructure, evaluation, and prompt design into one architecture.
+This project helped me better understand how RAG turns private documents into reliable context for AI applications.
 
-A strong RAG system should not just answer questions.
-
-It should produce answers that are grounded, traceable, inspectable, and useful.
-
-#RAG #AIInfrastructure #DataPlatform #pgvector #Postgres #FastAPI #LLM #VectorSearch #AIDesign #MachineLearning
+#RAG #AIInfrastructure #DataPlatform #pgvector #Postgres #FastAPI #LLM #VectorSearch #AIEngineering
