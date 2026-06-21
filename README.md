@@ -526,21 +526,6 @@ By completing these projects, this repository will demonstrate hands-on experien
 
 ---
 
-# Target Roles
-
-This project portfolio is designed to support growth toward roles such as:
-
-- AI Platform Engineer
-- AI Infrastructure Engineer
-- LLMOps Engineer
-- AI Data Platform Architect
-- AI Reliability Engineer
-- Backend Engineer, AI Systems
-- Data Platform Engineer
-- Intelligent Analytics Platform Architect
-
----
-
 # Learning Principles
 
 This repository follows a build-first approach:
@@ -563,13 +548,13 @@ The emphasis is on building systems that demonstrate practical AI infrastructure
 
 | Project                                | Status      |
 | -------------------------------------- | ----------- |
-| Systems Engineering Foundations        | Not Started |
-| Backend API + Async Worker             | Not Started |
-| Local LLM Serving Lab                  | Not Started |
-| RAG Document Assistant                 | Not Started |
-| AI Observability Platform              | Not Started |
-| Inference Performance Lab              | Not Started |
-| Kubernetes AI Platform Deployment      | Not Started |
+| Systems Engineering Foundations        | Completed   |
+| Backend API + Async Worker             | Completed   |
+| Local LLM Serving Lab                  | Completed   |
+| RAG Document Assistant                 | Completed   |
+| AI Observability Platform              | Completed   |
+| Inference Performance Lab              | Completed   |
+| Kubernetes AI Platform Deployment      | Completed   |
 | Observable Local LLM Platform Capstone | Completed   |
 
 ---
