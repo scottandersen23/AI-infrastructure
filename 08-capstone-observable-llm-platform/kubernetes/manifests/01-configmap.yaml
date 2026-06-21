@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: capstone-config
+  namespace: capstone-ai-platform
+data:
+  ENVIRONMENT: local-kubernetes
+  SERVICE_NAME: capstone-api-gateway
+  REDIS_URL: redis://redis:6379/0
+  LLM_SERVICE_URL: http://llm-service
+  RAG_SERVICE_URL: http://rag-service
+  OBSERVABILITY_DB_PATH: /app/data/capstone_metrics.db
+  LLM_RUNTIME: mock
+  DEFAULT_MODEL: capstone-mock-llm

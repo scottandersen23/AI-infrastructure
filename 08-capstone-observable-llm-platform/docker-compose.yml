@@ -1,0 +1,93 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: capstone
+      POSTGRES_PASSWORD: capstone
+      POSTGRES_DB: capstone
+    ports:
+      - "55440:5432"
+    volumes:
+      - capstone_postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U capstone -d capstone"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  llm-service:
+    build:
+      context: .
+      dockerfile: llm-service/Dockerfile
+    environment:
+      LLM_RUNTIME: mock
+      DEFAULT_MODEL: capstone-mock-llm
+    ports:
+      - "8011:8011"
+
+  rag-service:
+    build:
+      context: .
+      dockerfile: rag-service/Dockerfile
+    environment:
+      EMBEDDING_PROVIDER: hash
+    ports:
+      - "8012:8012"
+
+  observability:
+    build:
+      context: .
+      dockerfile: observability/Dockerfile
+    ports:
+      - "8013:8013"
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    environment:
+      ENVIRONMENT: local
+      SERVICE_NAME: capstone-api-gateway
+      DATABASE_URL: postgresql://capstone:capstone@postgres:5432/capstone
+      REDIS_URL: redis://redis:6379/0
+      LLM_SERVICE_URL: http://llm-service:8011
+      RAG_SERVICE_URL: http://rag-service:8012
+      OBSERVABILITY_DB_PATH: /app/data/capstone_metrics.db
+    ports:
+      - "8010:8010"
+    volumes:
+      - capstone_api_data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      llm-service:
+        condition: service_started
+      rag-service:
+        condition: service_started
+
+  worker:
+    build:
+      context: .
+      dockerfile: worker/Dockerfile
+    environment:
+      REDIS_URL: redis://redis:6379/0
+    depends_on:
+      redis:
+        condition: service_healthy
+
+volumes:
+  capstone_postgres_data:
+  capstone_api_data:

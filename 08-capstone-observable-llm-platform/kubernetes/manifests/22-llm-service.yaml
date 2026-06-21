@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-service
+  namespace: capstone-ai-platform
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llm-service
+  template:
+    metadata:
+      labels:
+        app: llm-service
+    spec:
+      containers:
+        - name: llm-service
+          image: capstone/llm-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8011
+          envFrom:
+            - configMapRef:
+                name: capstone-config
+          resources:
+            requests:
+              cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: "2"
+              memory: 2Gi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8011
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: llm-service
+  namespace: capstone-ai-platform
+spec:
+  selector:
+    app: llm-service
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8011
