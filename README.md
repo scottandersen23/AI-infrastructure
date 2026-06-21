@@ -425,15 +425,15 @@ Client
 
 ### Capstone Deliverables
 
-- Full source code
-- Docker Compose setup
-- Kubernetes deployment files
-- Architecture diagrams
-- Benchmark report
-- Observability dashboard screenshots
-- Technical writeup
-- LinkedIn project summary
-- GitHub documentation
+- [Full source code](./capstone-observable-llm-platform/)
+- [Docker Compose setup](./capstone-observable-llm-platform/docker-compose.yml)
+- [Kubernetes deployment files](./capstone-observable-llm-platform/kubernetes/manifests/)
+- [Architecture diagrams](./capstone-observable-llm-platform/diagrams/capstone-architecture.md)
+- [Benchmark report](./capstone-observable-llm-platform/benchmarks/benchmark-report.md)
+- [Observability dashboard screenshots](./capstone-observable-llm-platform/docs/screenshots/)
+- [Technical writeup](./capstone-observable-llm-platform/article/observable-local-llm-platform-article.md)
+- [LinkedIn project summary](./capstone-observable-llm-platform/article/linkedin-summary.md)
+- [GitHub documentation](./capstone-observable-llm-platform/README.md)
 
 ---
 
@@ -570,7 +570,7 @@ The emphasis is on building systems that demonstrate practical AI infrastructure
 | AI Observability Platform              | Not Started |
 | Inference Performance Lab              | Not Started |
 | Kubernetes AI Platform Deployment      | Not Started |
-| Observable Local LLM Platform Capstone | Not Started |
+| Observable Local LLM Platform Capstone | Completed   |
 
 ---
 
