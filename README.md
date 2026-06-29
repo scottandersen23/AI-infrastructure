@@ -1,4 +1,4 @@
-![Alt Text](learninglab.png)
+![Alt Text](learninglab-phase2.png)
 
 # AI Infrastructure Learning Lab
 
