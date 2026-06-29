@@ -1,6 +1,6 @@
 # Built-in Tool Catalog
 
-Initial tools seeded in `sql/init.sql` and implemented as stubs in `executor/app/handlers/`.
+Initial tools are seeded in `sql/init.sql` and implemented in `executor/app/handlers/`.
 
 ## search_docs
 
@@ -21,7 +21,7 @@ Return aggregate AI platform reliability metrics.
 | -------- | ---- | -------- | ------------ |
 | _(none)_ |      |          | Empty object |
 
-**Integration target:** Capstone observability service (`METRICS_URL`, default `:8013`)
+**Integration target:** Capstone API gateway metrics endpoint (`METRICS_URL`, default `:8010`)
 
 ## get_job_status
 
