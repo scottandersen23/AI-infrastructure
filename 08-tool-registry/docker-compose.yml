@@ -46,10 +46,11 @@ services:
       - "8009:8009"
     environment:
       REGISTRY_URL: http://registry:8008
+      DATABASE_URL: postgresql://tools:tools@postgres:5432/tools
       SERVICE_NAME: tool-executor
       ENVIRONMENT: local
       RAG_SERVICE_URL: ${RAG_SERVICE_URL:-http://host.docker.internal:8012}
-      METRICS_URL: ${METRICS_URL:-http://host.docker.internal:8013}
+      METRICS_URL: ${METRICS_URL:-http://host.docker.internal:8010}
       JOBS_API_URL: ${JOBS_API_URL:-http://host.docker.internal:8010}
       OTEL_EXPORTER: ${OTEL_EXPORTER:-console}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}

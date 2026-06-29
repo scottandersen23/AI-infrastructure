@@ -797,6 +797,14 @@ ai-infrastructure-learning-lab/
 │   └── README.md
 │
 ├── 09-single-agent-react-loop/
+│   ├── api/
+│   ├── sql/
+│   ├── docs/
+│   ├── diagrams/
+│   ├── evals/
+│   ├── docker-compose.yml
+│   └── README.md
+│
 ├── 10-dag-orchestrator/
 ├── 11-multi-agent-platform/
 ├── 12-data-platform-tools/
@@ -875,7 +883,7 @@ The emphasis is on building systems that demonstrate practical AI infrastructure
 | Project                            | Status      |
 | ---------------------------------- | ----------- |
 | Tool Registry and Execution Layer  | In Progress |
-| Single-Agent ReAct Loop            | Planned     |
+| Single-Agent ReAct Loop            | In Progress |
 | DAG Workflow Orchestrator          | Planned     |
 | Multi-Agent Coordination Platform  | Planned     |
 | Data Platform Tool Layer           | Planned     |

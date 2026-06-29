@@ -121,11 +121,11 @@ curl -s -X POST http://localhost:8009/invoke \
 
 ## Built-in Tools (Initial)
 
-| Tool             | Purpose                      | Status |
-| ---------------- | ---------------------------- | ------ |
-| `search_docs`    | RAG document retrieval       | Stub   |
-| `get_metrics`    | Platform reliability metrics | Stub   |
-| `get_job_status` | Async job status lookup      | Stub   |
+| Tool             | Purpose                      | Status                    |
+| ---------------- | ---------------------------- | ------------------------- |
+| `search_docs`    | RAG document retrieval       | Live capstone integration |
+| `get_metrics`    | Platform reliability metrics | Live capstone integration |
+| `get_job_status` | Async job status lookup      | Live capstone integration |
 
 See [tools/README.md](./tools/README.md) for schema definitions and integration notes.
 
@@ -169,18 +169,18 @@ Copy `.env.example` to `.env` and adjust as needed. Key settings:
 | `DATABASE_URL`    | `postgresql://tools:tools@postgres:5432/tools` | Registry Postgres connection  |
 | `REGISTRY_URL`    | `http://registry:8008`                         | Executor → registry base URL  |
 | `RAG_SERVICE_URL` | `http://host.docker.internal:8012`             | Optional RAG integration      |
-| `METRICS_URL`     | `http://host.docker.internal:8013`             | Optional metrics integration  |
+| `METRICS_URL`     | `http://host.docker.internal:8010`             | Optional metrics integration  |
 | `OTEL_EXPORTER`   | `console`                                      | OpenTelemetry exporter target |
 
 ## Deliverables Checklist
 
-- [ ] Tool schema registry with Postgres persistence
-- [ ] Executor service with argument validation
-- [ ] Three built-in tools (stub → live integration)
-- [ ] OpenTelemetry spans on tool invocation
-- [ ] Audit log for tool calls
+- [x] Tool schema registry with Postgres persistence
+- [x] Executor service with argument validation
+- [x] Three built-in tools (stub → live integration)
+- [x] OpenTelemetry spans on tool invocation
+- [x] Audit log for tool calls
 - [ ] Architecture documentation
-- [ ] Docker Compose local development stack
+- [x] Docker Compose local development stack
 - [ ] Technical writeup and benchmark notes
 
 ## What This Demonstrates
