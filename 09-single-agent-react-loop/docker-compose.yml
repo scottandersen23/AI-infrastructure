@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: agent
+      POSTGRES_PASSWORD: agent
+      POSTGRES_DB: agent
+    ports:
+      - "5435:5432"
+    volumes:
+      - single_agent_postgres_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agent -d agent"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8014:8014"
+    environment:
+      DATABASE_URL: postgresql://agent:agent@postgres:5432/agent
+      REGISTRY_URL: ${REGISTRY_URL:-http://host.docker.internal:8008}
+      EXECUTOR_URL: ${EXECUTOR_URL:-http://host.docker.internal:8009}
+      SERVICE_NAME: single-agent-react-api
+      ENVIRONMENT: local
+      MAX_STEPS: ${MAX_STEPS:-4}
+      TIMEOUT_MS: ${TIMEOUT_MS:-30000}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8014/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+volumes:
+  single_agent_postgres_data:
