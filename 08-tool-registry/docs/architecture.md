@@ -15,7 +15,7 @@
 2. Bind       — GET /tools returns schemas for LLM function calling
 3. Select     — LLM chooses tool + arguments at inference time
 4. Validate   — Executor validates args against registry schema
-5. Execute    — Handler runs (stub or Phase 1 service integration)
+5. Execute    — Handler calls the configured Phase 1 service integration
 6. Audit      — Invocation recorded in tool_invocations table
 7. Observe    — OpenTelemetry span emitted (tool.name, latency, success)
 ```
@@ -26,7 +26,7 @@
 
 **Postgres over in-memory registry.** Tool definitions and audit logs persist across restarts and support versioning, auth scopes, and rate limits.
 
-**Stub-first handlers.** Built-in tools return structured stub data until Phase 1 services (RAG, metrics, jobs) are wired via environment URLs.
+**Capstone service integrations.** Built-in tools call the Phase 1 capstone RAG, metrics, and jobs endpoints through environment-configured URLs.
 
 ## Phase 2 Integration Points
 
